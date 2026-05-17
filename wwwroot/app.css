@@ -58,3 +58,164 @@ h1:focus {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
     text-align: start;
 }
+.game-container {
+    min-height: 100vh;
+    overflow: hidden;
+    transition: 0.4s ease;
+    font-family: Arial, sans-serif;
+}
+
+/* THEMES */
+
+.dark-theme {
+    background: linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.85)), url('/images/bg.jpg');
+    background-color: #111;
+    color: white;
+}
+
+.light-theme {
+    background: linear-gradient(to bottom, #dbeafe, #9ca3af);
+    color: black;
+}
+
+/* TOP BAR */
+
+.top-ui {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+}
+
+.health-section {
+    width: 280px;
+}
+
+.health-bar {
+    width: 100%;
+    height: 22px;
+    background: #222;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid white;
+}
+
+.health-fill {
+    height: 100%;
+    transition: 0.5s;
+}
+
+.knight-health {
+    background: limegreen;
+}
+
+.skeleton-health {
+    background: crimson;
+}
+
+.logo {
+    font-size: 34px;
+    font-weight: bold;
+}
+
+.blink {
+    animation: blinkLogo 1s infinite;
+}
+
+@keyframes blinkLogo {
+    50% {
+        opacity: 0.4;
+    }
+}
+
+.settings-box {
+    display: flex;
+    gap: 10px;
+}
+
+.setting-btn {
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/* FLEX DEBUG */
+
+.flex-debug {
+    position: absolute;
+    left: 20px;
+    top: 180px;
+    width: 220px;
+    background: rgba(0,0,0,.65);
+    border: 1px solid white;
+    border-radius: 14px;
+    padding: 15px;
+}
+
+/* BATTLE AREA */
+
+.battle-arena {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    height: 60vh;
+    padding: 0 120px;
+}
+
+.knight {
+    transition: 0.3s ease;
+}
+
+.skeleton {
+    transform: scaleX(-1);
+}
+
+/* ATTACK ANIMATION */
+
+.attack {
+    animation: swordAttack .4s ease;
+}
+
+@keyframes swordAttack {
+
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(30px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* BUTTONS */
+
+.controls {
+    position: fixed;
+    bottom: 35px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+}
+
+    .controls button {
+        background: #1f2937;
+        color: white;
+        border: none;
+        padding: 16px 28px;
+        border-radius: 14px;
+        cursor: pointer;
+        font-size: 18px;
+        transition: 0.2s;
+    }
+
+        .controls button:hover {
+            transform: scale(1.08);
+        }
