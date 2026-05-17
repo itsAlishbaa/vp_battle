@@ -219,3 +219,192 @@ h1:focus {
         .controls button:hover {
             transform: scale(1.08);
         }
+.game-container {
+    min-height: 100vh;
+    background: radial-gradient(circle at center, rgba(40,40,40,.5), rgba(0,0,0,.95)), linear-gradient(to bottom, #1a1a1a, #0b0b0b);
+    color: white;
+    overflow: hidden;
+    position: relative;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* TOP UI */
+
+.top-ui {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+}
+
+.health-section {
+    width: 320px;
+}
+
+    .health-section h4 {
+        margin-bottom: 8px;
+    }
+
+.health-bar {
+    width: 100%;
+    height: 24px;
+    background: rgba(255,255,255,.1);
+    border-radius: 30px;
+    overflow: hidden;
+    border: 2px solid rgba(255,255,255,.2);
+}
+
+.health-fill {
+    height: 100%;
+    transition: .5s ease;
+}
+
+.knight-health {
+    background: linear-gradient(to right, #00ff88, #00d26a);
+}
+
+.skeleton-health {
+    background: linear-gradient(to right, #ff2d55, #ff0000);
+}
+
+/* VS LOGO */
+
+.logo {
+    font-size: 42px;
+    font-weight: bold;
+    text-shadow: 0 0 20px red;
+}
+
+.blink {
+    animation: glow 1s infinite;
+}
+
+@keyframes glow {
+
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .4;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* SETTINGS */
+
+.settings-box {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.setting-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,.12);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+    .setting-btn:hover {
+        transform: scale(1.1);
+    }
+
+/* DEBUG PANEL */
+
+.flex-debug {
+    position: absolute;
+    left: 25px;
+    top: 180px;
+    background: rgba(0,0,0,.5);
+    border: 1px solid rgba(255,255,255,.2);
+    padding: 18px;
+    border-radius: 20px;
+    width: 240px;
+    backdrop-filter: blur(8px);
+}
+
+/* BATTLE ARENA */
+
+.battle-arena {
+    height: 60vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    padding: 0 140px;
+    margin-top: 30px;
+}
+
+.knight,
+.skeleton {
+    transition: .3s ease;
+}
+
+    .knight svg,
+    .skeleton svg {
+        width: 260px;
+        height: 260px;
+        filter: drop-shadow(0 0 20px rgba(255,255,255,.2));
+    }
+
+.skeleton {
+    transform: scaleX(-1);
+}
+
+/* ATTACK */
+
+.attack {
+    animation: slash .4s ease;
+}
+
+@keyframes slash {
+
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(40px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* CONTROLS */
+
+.controls {
+    position: fixed;
+    bottom: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+}
+
+    .controls button {
+        background: linear-gradient(to bottom, #1f2937, #111827);
+        border: 1px solid rgba(255,255,255,.15);
+        color: white;
+        padding: 18px 32px;
+        border-radius: 18px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: .2s ease;
+        box-shadow: 0 0 15px rgba(255,255,255,.08);
+    }
+
+        .controls button:hover {
+            transform: translateY(-4px);
+        }
