@@ -1,5 +1,207 @@
-﻿<h3>Game</h3>
+﻿@page "/game"
+
+<div class="game-container @(isDark ? "dark-theme" : "light-theme")">
+
+    <!-- Top Bar -->
+    <div class="top-ui">
+
+        <div class="health-section">
+            <h4>Knight</h4>
+            <div class="health-bar">
+                <div class="health-fill knight-health"
+                     style="width:@KnightHealth%">
+                </div>
+            </div>
+        </div>
+
+        <div class="logo @(blinkLogo ? "blink" : "")">
+            ⚔️ VS ☠️
+        </div>
+
+        <div class="health-section">
+            <h4>Skeleton</h4>
+            <div class="health-bar">
+                <div class="health-fill skeleton-health"
+                     style="width:@SkeletonHealth%">
+                </div>
+            </div>
+        </div>
+
+        <div class="settings-box">
+            <button class="setting-btn"
+                    @onclick="ToggleTheme">
+                @(isDark ? "🌙" : "☀️")
+            </button>
+
+            <button class="setting-btn"
+                    @onclick="ToggleBlink">
+                ✨
+            </button>
+        </div>
+
+    </div>
+
+    <!-- Flex Debug -->
+    <div class="flex-debug">
+        <h5>CSS Backend</h5>
+        <p>display: flex;</p>
+        <p>justify-content: center;</p>
+        <p>align-items: end;</p>
+    </div>
+
+    <!-- Arena -->
+    <div class="battle-arena">
+
+        <!-- Knight -->
+        <div class="knight @(isAttacking ? "attack" : "")">
+
+            <svg width="180" height="180" viewBox="0 0 200 200">
+
+                <!-- Head -->
+                <circle cx="100"
+                        cy="45"
+                        r="20"
+                        fill="#d8d8d8" />
+
+                <!-- Helmet -->
+                <rect x="80"
+                      y="20"
+                      width="40"
+                      height="20"
+                      fill="silver" />
+
+                <!-- Body -->
+                <rect x="80"
+                      y="65"
+                      width="40"
+                      height="55"
+                      fill="#234d9c" />
+
+                <!-- Legs -->
+                <line x1="90" y1="120"
+                      x2="80" y2="165"
+                      stroke="silver"
+                      stroke-width="7" />
+
+                <line x1="110" y1="120"
+                      x2="120" y2="165"
+                      stroke="silver"
+                      stroke-width="7" />
+
+                <!-- Sword -->
+                <line x1="130"
+                      y1="80"
+                      x2="165"
+                      y2="35"
+                      stroke="silver"
+                      stroke-width="6" />
+
+            </svg>
+        </div>
+
+        <!-- Skeleton -->
+        <div class="skeleton">
+
+            <svg width="180" height="180" viewBox="0 0 200 200">
+
+                <!-- Skull -->
+                <circle cx="100"
+                        cy="45"
+                        r="20"
+                        fill="#d9d9d9" />
+
+                <!-- Eyes -->
+                <circle cx="92" cy="42"
+                        r="4"
+                        fill="red" />
+
+                <circle cx="108" cy="42"
+                        r="4"
+                        fill="red" />
+
+                <!-- Body -->
+                <rect x="85"
+                      y="65"
+                      width="30"
+                      height="55"
+                      fill="#e8e8e8" />
+
+                <!-- Axe -->
+                <line x1="70"
+                      y1="80"
+                      x2="35"
+                      y2="35"
+                      stroke="#8B4513"
+                      stroke-width="7" />
+
+            </svg>
+        </div>
+
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+
+        <button @onclick="MoveBack">
+            ⬅️ Back
+        </button>
+
+        <button @onclick="MoveForward">
+            ➡️ Forward
+        </button>
+
+        <button @onclick="Attack">
+            ⚔️ Attack
+        </button>
+
+        <button>
+            ⏸️ Pause
+        </button>
+
+    </div>
+
+</div>
 
 @code {
 
+    private int KnightHealth = 100;
+    private int SkeletonHealth = 100;
+
+    private bool isDark = true;
+    private bool blinkLogo = true;
+    private bool isAttacking = false;
+
+    void ToggleTheme()
+    {
+        isDark = !isDark;
+    }
+
+    void ToggleBlink()
+    {
+        blinkLogo = !blinkLogo;
+    }
+
+    void MoveForward()
+    {
+    }
+
+    void MoveBack()
+    {
+    }
+
+    async Task Attack()
+    {
+        isAttacking = true;
+
+        SkeletonHealth -= 10;
+
+        if (SkeletonHealth < 0)
+            SkeletonHealth = 0;
+
+        StateHasChanged();
+
+        await Task.Delay(500);
+
+        isAttacking = false;
+    }
 }
