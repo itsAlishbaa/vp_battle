@@ -1,7 +1,7 @@
 using vp_battle.Components;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddScoped<GameStateService>();
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
