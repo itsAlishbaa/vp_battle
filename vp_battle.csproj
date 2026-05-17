@@ -10,7 +10,6 @@
   <ItemGroup>
     <Folder Include="Components\Models\" />
     <Folder Include="Components\Data\" />
-    <Folder Include="Components\Services\" />
   </ItemGroup>
 
 </Project>
